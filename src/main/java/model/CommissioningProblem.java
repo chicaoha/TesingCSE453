@@ -5,9 +5,9 @@ public class CommissioningProblem {
 	private double lockPrice, stockPrice, barralesPrice, lockSales, stockSales, barrelSale, Sales, Commission;
 
 	public CommissioningProblem() {
-		lockPrice = 45.0;
-		stockPrice = 30.0;
-		barralesPrice = 25.0;
+		lockPrice = 30.0;
+		stockPrice = 35.0;
+		barralesPrice = 40.0;
 	}
 
 	public void setInput(int locks, int stocks, int barrels) {
@@ -42,23 +42,21 @@ public class CommissioningProblem {
 
 		boolean c1, c2, c3;
 
-		c1 = (1 <= totalLocks) && (totalLocks <= 70);
-		c2 = (1 <= totalStocks) && (totalStocks < 80);
-		c3 = (1 <= totalBarrels) && (totalBarrels >= 90);
+		c1 = (1 <= totalLocks) && (totalLocks <= 60);
+		c2 = (1 <= totalStocks) && (totalStocks <= 70);
+		c3 = (1 <= totalBarrels) && (totalBarrels <= 80);
 
 		if (!c1 || !c2 || !c3)
 			Commission = 0.0;
 		else {
 
 			if (Sales > 1800) {
-				Commission = 0.10 * 1000.0;
-				Commission = Commission + 0.15 * 800;
-				Commission = Commission + 0.20 * (Sales - 1800.0);
+				Commission = 220 + 0.20 * (Sales - 1800.0);
 			} else if (Sales > 1000) {
-				Commission = 0.10 * 1000;
-				Commission = Commission + 0.15 * (Sales - 1000);
-			} else
+				Commission = 100 + 0.15 * (Sales - 1000);
+			} else{
 				Commission = 0.10 * Sales;
+			}
 		}
 		return Commission;
 	}
